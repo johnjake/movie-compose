@@ -67,6 +67,13 @@ dependencies {
      * Timber**/
     implementation("com.jakewharton.timber:timber:5.0.1")
 
+    /*** room ***/
+    implementation ("androidx.room:room-runtime:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
+
+    /*** room kotlin extension and coroutines support ***/
+    implementation("androidx.room:room-ktx:2.5.0")
+
     /** retrofit **/
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
