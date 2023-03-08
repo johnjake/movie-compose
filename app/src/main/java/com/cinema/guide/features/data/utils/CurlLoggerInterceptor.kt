@@ -35,7 +35,7 @@ class CurlLoggerInterceptor : Interceptor {
                 request.headers().names().forEach {
                     appendHeader(
                         it,
-                        request.headers()[it]
+                        request.headers()[it],
                     )
                 }
                 // request body
