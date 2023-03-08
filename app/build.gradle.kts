@@ -1,13 +1,13 @@
 @file:Suppress("UnstableApiUsage")
-import java.io.FileInputStream
+
 import java.util.Properties
 
 plugins {
-    id ("com.android.application")
-    id ("kotlin-kapt")
-    id ("kotlin-parcelize")
-    id ("org.jetbrains.kotlin.android")
-    id ("dagger.hilt.android.plugin")
+    id("com.android.application")
+    id("kotlin-kapt")
+    id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -41,7 +41,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -67,9 +67,9 @@ android {
 
 dependencies {
 
-    implementation ("androidx.core:core-ktx:1.9.0")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation ("androidx.activity:activity-compose:1.6.1")
+    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.activity:activity-compose:1.6.1")
 
     val composeBom = platform("androidx.compose:compose-bom:2023.01.00")
     implementation(composeBom)
@@ -80,29 +80,42 @@ dependencies {
     implementation("com.jakewharton.timber:timber:5.0.1")
 
     /*** room ***/
-    implementation ("androidx.room:room-runtime:2.5.0")
+    implementation("androidx.room:room-runtime:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
 
     /*** room kotlin extension and coroutines support ***/
     implementation("androidx.room:room-ktx:2.5.0")
 
     /** retrofit **/
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    implementation ("com.google.dagger:hilt-android:2.45")
-    kapt ("com.google.dagger:hilt-android-compiler:2.45")
+    /** chucker interceptor **/
+    debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
 
-    implementation ("androidx.compose.ui:ui")
-    implementation ("androidx.compose.ui:ui-graphics")
-    implementation ("androidx.compose.ui:ui-tooling-preview")
-    implementation ("androidx.compose.material3:material3")
-    testImplementation ("junit:junit:4.13.2")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4")
-    debugImplementation ("androidx.compose.ui:ui-tooling")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest")
+    /** httpLoggin **/
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+    implementation("com.google.dagger:hilt-android:2.45")
+    kapt("com.google.dagger:hilt-android-compiler:2.45")
+
+    /** KOTLIN **/
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+
+    /** GSON **/
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-graphics")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
 
 fun getProps(file: File): java.util.Properties {

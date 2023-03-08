@@ -30,16 +30,16 @@ class CurlLoggerInterceptor : Interceptor {
 
             try {
                 // method
-                append("${request.method().uppercase()} ")
+                append("${request.method.uppercase()} ")
                 // header
-                request.headers().names().forEach {
+                request.headers.names().forEach {
                     appendHeader(
                         it,
-                        request.headers()[it],
+                        request.headers[it],
                     )
                 }
                 // request body
-                val requestBody = request.body()
+                val requestBody = request.body
                 appendRequestBody(requestBody)
                 // request url
                 appendUrl(request)
@@ -69,7 +69,7 @@ class CurlLoggerInterceptor : Interceptor {
     }
 
     private fun StringBuilder.appendUrl(request: Request) {
-        this.append(""""${request.url()}"""")
+        this.append(""""${request.url}"""")
         this.append(" -L")
     }
 }
