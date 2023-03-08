@@ -1,4 +1,4 @@
-package com.cinema.guide
+package com.cinema.guide.features.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
